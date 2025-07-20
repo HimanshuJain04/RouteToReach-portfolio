@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <div className="flex justify-between pb-28 pt-10">
+    <div className="flex justify-between py-10">
       {/* logo */}
       <div className="w-36">LOGO</div>
 

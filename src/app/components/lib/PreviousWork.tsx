@@ -1,3 +1,15 @@
 export function PreviousWork() {
-  return <div>PreviousWork</div>;
+  return (
+    <div className="w-full flex flex-col items-center-center gap-14">
+      {/* title */}
+      <div className="w-full flex justify-center">
+        <h1 className="text-6xl text-center font-bold max-w-2xl">
+          See what our customer say about us
+        </h1>
+      </div>
+
+      {/* TESTIMONIALS */}
+      <div className="w-full bg-red-200 h-6"></div>
+    </div>
+  );
 }
