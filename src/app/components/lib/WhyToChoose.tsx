@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const videos = ["/ambuj.mp4", "/ambuj.mp4", "/ambuj.mp4", "/ambuj.mp4"];
+const videos = ["/ambuj.mp4"];
 
 export function WhyToChoose() {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
@@ -77,7 +77,9 @@ export function WhyToChoose() {
           {videos.map((src, idx) => (
             <SwiperSlide key={idx}>
               <video
-                ref={(el) => (videoRefs.current[idx] = el)}
+                ref={(el) => {
+                  videoRefs.current[idx] = el;
+                }}
                 src={src}
                 className="w-full aspect-video object-cover"
                 loop

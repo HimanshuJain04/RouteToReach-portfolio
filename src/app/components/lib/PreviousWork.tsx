@@ -1,4 +1,6 @@
 export function PreviousWork() {
+  return null;
+
   return (
     <div className="w-full flex flex-col items-center-center gap-14">
       {/* title */}
@@ -9,7 +11,7 @@ export function PreviousWork() {
       </div>
 
       {/* TESTIMONIALS */}
-      <div className="w-full bg-red-200 h-6"></div>
+      <div className="w-full"></div>
     </div>
   );
 }
