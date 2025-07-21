@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import SwiperCore from "swiper";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // import Swiper styles
@@ -13,15 +13,15 @@ import "swiper/css/pagination";
 const videos = ["/ambuj.mp4", "/pranay.mp4"];
 
 export function WhyToChoose() {
-  SwiperCore.use([Navigation, Pagination, Autoplay]);
+  SwiperCore.use([Navigation, Pagination]); // Removed Autoplay
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const swiperRef = useRef<SwiperCore | null>(null);
 
   // Pause all videos except the one at active index
-  const handleSlideChange = (swiper: SwiperCore) => {
+  const handleSlideChange = useCallback((swiper: SwiperCore) => {
     videoRefs.current.forEach((video, idx) => {
       if (!video) return;
-
       if (idx === swiper.activeIndex) {
         video.muted = false;
         video.play();
@@ -30,9 +30,38 @@ export function WhyToChoose() {
         video.muted = true;
       }
     });
-  };
+  }, []);
 
-  // On initial mount, pause all and mute except first video after 2s
+  // Intersection Observer to play/pause video when in view
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    videoRefs.current.forEach((video, idx) => {
+      if (!video) return;
+      const observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Only play if this is the active slide
+              if (swiperRef.current && swiperRef.current.activeIndex === idx) {
+                video.muted = false;
+                video.play();
+              }
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(video);
+      observers.push(observer);
+    });
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, [videoRefs.current.length]);
+
+  // On initial mount, pause all and mute except first video
   useEffect(() => {
     videoRefs.current.forEach((video, idx) => {
       if (!video) return;
@@ -53,7 +82,6 @@ export function WhyToChoose() {
         <h1 className="font-bold text-6xl max-w-xl">
           Why RouteToReach Is The Best Choice?
         </h1>
-
         <h6 className="text-xl text-white/70">
           Watch this 1-minute video to know why we’re the right growth partner
           for your brand.
@@ -64,10 +92,13 @@ export function WhyToChoose() {
         <Swiper
           slidesPerView={1}
           navigation
+          loop
           pagination={{ clickable: true }}
-          onSlideChange={handleSlideChange}
+          onSlideChange={(swiper) => {
+            swiperRef.current = swiper;
+            handleSlideChange(swiper);
+          }}
           className="w-full aspect-video"
-          autoplay
         >
           {videos.map((src, idx) => (
             <SwiperSlide key={idx}>
@@ -77,6 +108,7 @@ export function WhyToChoose() {
                 }}
                 src={src}
                 className="w-full aspect-video object-cover"
+                loop
                 playsInline
                 muted
                 controls

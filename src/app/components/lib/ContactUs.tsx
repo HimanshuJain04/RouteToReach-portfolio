@@ -11,7 +11,7 @@ export function ContactUs() {
           Contact us for the service you want to use
         </h6>
 
-        <Button href="mailto:you@example.com">Contact us</Button>
+        <Button href="mailto:prathammathur688@gmail.com">Contact us</Button>
       </div>
     </div>
   );
