@@ -19,7 +19,10 @@ export function HeroSection() {
         </h6>
 
         {/* service button */}
-        <Button rightIcon={<GoArrowUpRight className="text-xl" />}>
+        <Button
+          href="#services"
+          rightIcon={<GoArrowUpRight className="text-xl" />}
+        >
           Our Service
         </Button>
       </div>

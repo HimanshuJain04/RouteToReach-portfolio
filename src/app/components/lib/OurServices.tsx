@@ -3,7 +3,10 @@ import { SERVICES } from "./services";
 
 export function OurServices() {
   return (
-    <div className="w-full flex flex-col items-center-center gap-14">
+    <div
+      id="services"
+      className="w-full flex flex-col items-center-center gap-14"
+    >
       {/* title */}
       <div className="w-full flex justify-center">
         <h1 className="text-6xl text-center font-bold max-w-2xl">

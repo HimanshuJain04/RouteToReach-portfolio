@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const videos = ["/ambuj.mp4"];
+const videos = ["/ambuj.mp4", "/pranay.mp4"];
 
 export function WhyToChoose() {
   SwiperCore.use([Navigation, Pagination, Autoplay]);
@@ -23,13 +23,9 @@ export function WhyToChoose() {
       if (!video) return;
 
       if (idx === swiper.activeIndex) {
-        // Play current video after 2s delay
-        setTimeout(() => {
-          video.muted = false;
-          video.play();
-        }, 2000);
+        video.muted = false;
+        video.play();
       } else {
-        // Pause and mute other videos
         video.pause();
         video.muted = true;
       }
@@ -41,10 +37,8 @@ export function WhyToChoose() {
     videoRefs.current.forEach((video, idx) => {
       if (!video) return;
       if (idx === 0) {
-        setTimeout(() => {
-          video.muted = false;
-          video.play();
-        }, 2000);
+        video.muted = false;
+        video.play();
       } else {
         video.pause();
         video.muted = true;
@@ -53,7 +47,7 @@ export function WhyToChoose() {
   }, []);
 
   return (
-    <div className="w-full flex flex-col gap-14">
+    <div id="why-to-choose" className="w-full flex flex-col gap-14">
       {/* title | subtitle */}
       <div className="flex gap-16">
         <h1 className="font-bold text-6xl max-w-xl">
@@ -73,6 +67,7 @@ export function WhyToChoose() {
           pagination={{ clickable: true }}
           onSlideChange={handleSlideChange}
           className="w-full aspect-video"
+          autoplay
         >
           {videos.map((src, idx) => (
             <SwiperSlide key={idx}>
@@ -82,7 +77,6 @@ export function WhyToChoose() {
                 }}
                 src={src}
                 className="w-full aspect-video object-cover"
-                loop
                 playsInline
                 muted
                 controls
