@@ -5,15 +5,17 @@ export function HeroSection() {
   return (
     <div
       id="home"
-      className="w-full grid grid-cols-2 gap-8 justify-between items-center"
+      className="w-full grid sm:grid-cols-2 gap-8 justify-between items-center"
     >
       {/* details */}
       <div className="flex flex-col items-start pt-36 gap-6 max-w-lg">
         {/* title */}
-        <h1 className="font-bold text-8xl">Build Your Digital Empire</h1>
+        <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+          Build Your Digital Empire
+        </h1>
 
         {/* subtitle */}
-        <h6 className="text-lg text-white/70">
+        <h6 className="text-sm sm:text-base lg:text-lg text-white/70">
           RouteToReach is your one-stop solution for result-driven digital
           marketing. From branding to performance marketing — we grow your
           business, digitally. 🎯 Let us handle the digital, while you focus on
