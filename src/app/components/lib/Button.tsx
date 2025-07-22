@@ -11,7 +11,7 @@ export function Button({
   href?: string;
 }) {
   const baseCss =
-    "font-bold flex gap-2 justify-center items-center text-xl text-white bg-[#5454D4] rounded py-3 px-6";
+    "font-bold flex gap-2 shrink-0 justify-center items-center sm:text-base text-sm text-white bg-[#5454D4] rounded py-2 px-6";
 
   if (href) {
     return (
