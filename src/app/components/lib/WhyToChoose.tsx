@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const videos = ["/ambuj.mp4", "/pranay.mp4"];
+const videos = ["/ambuj.mp4", "/pranay.mp4", "arjun.mp4"];
 
 export function WhyToChoose() {
   SwiperCore.use([Navigation, Pagination]); // Removed Autoplay

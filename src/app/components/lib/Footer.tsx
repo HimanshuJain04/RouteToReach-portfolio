@@ -1,5 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaInstagram, FaPhoneAlt } from "react-icons/fa";
+
+const FooterItems = [
+  {
+    label: "Instagram",
+    icon: <FaInstagram />,
+    href: "https://www.instagram.com/routetoreach",
+  },
+  {
+    label: "7898935945",
+    icon: <FaPhoneAlt />,
+    href: "tel:7898935945",
+  },
+];
 
 export function Footer() {
   return (
@@ -13,17 +27,17 @@ export function Footer() {
 
           {/* links */}
           <div className="flex sm:text-base text-sm sm:flex-row flex-col sm:gap-10 gap-3">
-            <Link href="/" className="text-white/70">
-              Support
-            </Link>
+            {FooterItems.map((item, idx) => (
+              <Link
+                key={idx}
+                href={item.href}
+                className="text-white/70 hover:underline flex items-center gap-2"
+              >
+                <span className="text-lg">{item.icon}</span>
 
-            <Link href="/" className="text-white/70">
-              Privacy Policy
-            </Link>
-
-            <Link href="/" className="text-white/70">
-              Terms and Conditions
-            </Link>
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
 
