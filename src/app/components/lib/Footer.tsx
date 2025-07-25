@@ -19,14 +19,14 @@ export function Footer() {
   return (
     <footer id="footer" className="w-full flex justify-center py-8">
       <div className="flex flex-col w-full max-w-[90%] gap-6">
-        <div className="flex flex-col sm:flex-row w-full justify-between sm:items-center sm:gap-10 gap-5">
+        <div className="flex flex-col sm:flex-row w-full justify-between sm:items-center gap-10 ">
           {/* logo */}
           <Link href={"/"} className="">
             <Image src={"/logo.jpg"} alt="logo" width={80} height={20} />
           </Link>
 
           {/* links */}
-          <div className="flex sm:text-base text-sm sm:flex-row flex-col sm:gap-10 gap-3">
+          <div className="flex sm:text-base text-sm sm:flex-row flex-col sm:gap-10 gap-6">
             {FooterItems.map((item, idx) => (
               <Link
                 key={idx}
