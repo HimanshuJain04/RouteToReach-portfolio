@@ -7,6 +7,7 @@ import {
   PreviousWork,
   WhyToChoose,
 } from "./components";
+import { Testimonials } from "./components/lib/Testimonials";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
           <WhyToChoose />
           <OurServices />
           <PreviousWork />
+          <Testimonials />
         </div>
 
         <ContactUs />

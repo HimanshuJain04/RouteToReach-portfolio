@@ -13,7 +13,7 @@ import "swiper/css/pagination";
 const videos = ["/ambuj.mp4", "/pranay.mp4", "arjun.mp4"];
 
 export function WhyToChoose() {
-  SwiperCore.use([Navigation, Pagination]); // Removed Autoplay
+  SwiperCore.use([Navigation, Pagination]);
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const swiperRef = useRef<SwiperCore | null>(null);
