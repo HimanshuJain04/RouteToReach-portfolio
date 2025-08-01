@@ -53,7 +53,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 w-full flex justify-center z-20 backdrop-blur-2xl">
+    <nav className="fixed top-0 w-full flex justify-center z-50 backdrop-blur-2xl">
       <div className="max-w-[90%] flex w-full justify-between items-center py-3">
         {/* logo */}
         <Link href="/">
